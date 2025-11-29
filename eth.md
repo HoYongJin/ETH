@@ -1,10 +1,9 @@
-# loadFixture from "@nomicfoundation/hardhat-network-helpers"
-- 테스트를 효율적으로 실행하기 위해 초기 상태를 스냅샷으로 저장하고 재사용하는 도구
-
-# expect from "chai"
-- 기대값(Assertion)을 검증하는 데 사용
-- expect(A).to.equal(B)
-
-# ethers from "hardhat"
-- hardhat 플러그인에서 ethers 객체를 가져옴
-- 스마트 컨트랙트 배포, 지갑 생성, 트랜잭션 전송 등 이더리움 네트워크와 상호작용하는 핵심 라이브러리
+# Test Code Coverage
+- 작성한 단위 테스트(Unit Test)가 스마트 컨트랙트의 실제 코드를 얼마나(몇 %) 실행하고 검증했는지를 시각적으로 보여주는 도구
+- 테스트가 누락된 로직이나 조건문이 없는지 파악할 수 있음
+- Stmts(Statements, 구문 커버리지)
+    - 명령어(구문) 하나하나가 실행되었는가?
+- Branch: 
+- Funcs: 
+- Lines: 
+- Uncovered Lines: 
