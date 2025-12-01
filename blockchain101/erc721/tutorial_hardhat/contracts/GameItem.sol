@@ -1,9 +1,9 @@
 // SPDX-License-Identifier: MIT
 pragma solidity ^0.8.13;
 
-import "@openzeppelin/contracts/token/ERC721/extensions/ERC721URIStorage.sol";  // NFT 표준 기능 + 메타데이터 URI(이미지 주소)를 관리하는 확장 기능
-import "@openzeppelin/contracts/access/Ownable.sol";    // 컨트랙트의 '주인(Owner)'을 설정하고, 주인만 실행할 수 있는 기능(onlyOwner)을 제공
-import "@openzeppelin/contracts/utils/Counters.sol";    // 1, 2, 3... 순서대로 증가하는 안전한 카운터를 제공합니다. (tokenId 생성용)
+import "@openzeppelin/contracts/token/ERC721/extensions/ERC721URIStorage.sol";
+import "@openzeppelin/contracts/access/Ownable.sol";    
+import "@openzeppelin/contracts/utils/Counters.sol";
 
 // GameItem이라는 컨트랙트를 정의하며 ERC721URIStorage와 Ownable의 모든 기능을 상속
 contract GameItem is ERC721URIStorage, Ownable {
