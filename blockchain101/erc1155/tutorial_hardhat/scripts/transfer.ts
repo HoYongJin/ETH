@@ -1,5 +1,6 @@
 import { ethers } from "hardhat";
 const contractAddress = process.env.ERC1155!;
+
 async function safeTransferFrom(from: string, to: string, id: Array<number>, amount: Array<number>) {
     console.log('transfer from ERC1155 contract')
 
