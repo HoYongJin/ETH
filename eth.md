@@ -102,3 +102,25 @@
     - event Transfer(address indexed _from, address indexed _to, uint256 indexed _tokenId): NFT의 소유권이 변경될 때(전송될 때) 발생
     - event Approval(address indexed _owner, address indexed _approved, uint256 indexed _tokenId): 특정 NFT(_tokenId)에 대한 승인 내용이 변경될 때 발생
     - event ApprovalForAll(address indexed _owner, address indexed _operator, bool _approved): setApprovalForAll 함수를 통해 모든 자산에 대한 관리 권한 설정이 변경될 때 발생
+
+# Governance
+- 탈중앙화된 네트워크나 프로토콜의 의사결정 과정
+## On-chain Governance
+- 방식: Proposal, Voting, Execution 모든 과정이 스마트 컨트랙트 내에서 이루어짐
+- 실행: 투표가 통과되면, 스마트 컨트랙트가 자동으로 코드를 실행하여 프로토콜을 업그레이드
+- 온체인 거버넌스 시스템을 구축하려면 최소 3가지의 스마트 컨트랙트가 유기적으로 연결되어야 함
+    1. ERC20Votes
+        - 투표권(주로, 1 Token = 1 Vote)
+        - 일반 ERC20과 달리 Snapshots (Checkpoints) 기능이 필수
+        - 투표가 시작된 이후에 토큰을 전송하거나 거래소에서 빌려와서(Flash Loan) 투표하고 갚는 공격을 막기 위해 특정 블록 시점(과거)에 가지고 있던 잔액 을 기준으로 투표권을 행사하게 강제
+        - Delegation: 내 투표권을 다른 전문가에게 위임하는 기능
+    2. Governor
+        - 의사결정의 두뇌
+        - Propose: 안건(어떤 함수를 실행할지, 매개변수는 뭔지) 제안
+        - Cast Vote: 찬성, 반대, 기권표
+        - State Machine: 제안의 상태를 관리(Pending --> Active --> Succeeded --> Defeated -> Queued --> Executed)
+    3. Timelock Controller
+        - 의사결정의 실행자(Muscle)이자 금고
+        - 제 프로토콜의 소유권(Ownership)이나 자금은 이 Timelock 컨트랙트가 보유
+        - Governor에서 투표가 통과되면, Governor는 Timelock에게 "이 함수를 실행해"라고 명령
+        - Time Delay: 보안을 위해 투표 통과 즉시 실행하지 않고, 일정 시간 대기 후 실행
